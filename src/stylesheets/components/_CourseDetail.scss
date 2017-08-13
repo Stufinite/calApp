@@ -1,0 +1,52 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.title-bar {
+  padding-left: 8px;
+  height: 44px;
+  background-color: $mainColor;
+  color: white;
+  font-size: 18px;
+  line-height: 44px;
+}
+
+.course-detail {
+  margin: 8px;
+  padding: 8px 16px;
+  border: 1px black solid;
+  background-color: white;
+
+  .box-title {
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px black solid;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  .label {
+    width: percentage(1/5);
+  }
+
+  .content {
+    width: percentage(4/5);
+    text-align: right;
+    font-weight: bolder;
+  }
+
+  .radar {
+    height: 300px;
+  }
+
+  .review {
+    width: 100%;
+    text-align: right;
+  }
+}

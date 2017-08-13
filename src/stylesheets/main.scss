@@ -1,0 +1,18 @@
+$mainColor: #428bca;
+$backgroundColor: #fafafa;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $backgroundColor!important;
+}
+
+
+#root {
+  @import 'utils/all';
+  @import 'base/all';
+  @import 'components/all';
+  @import 'themes/all';
+}

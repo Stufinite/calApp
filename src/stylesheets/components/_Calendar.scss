@@ -1,0 +1,82 @@
+.week-menu {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: white;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    padding: 8px;
+    width: percentage(1/7);
+    color: $mainColor;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.timetable {
+  padding-top: 8px;
+  padding-bottom: 52px;
+
+  .clock {
+    display: inline-block;
+    width: 32px;
+    vertical-align: top;
+
+    .cell {
+      width: 100%;
+      height: 120px;
+      text-align: center;
+      line-height: 120px;
+    }
+  }
+
+  .course {
+    display: inline-block;
+    width: calc(99% - 32px);
+    vertical-align: top;
+
+    .cell {
+      width: 100%;
+      height: 120px;
+      border-bottom: 4px $backgroundColor solid;
+      background-color: white;
+      text-align: center;
+    }
+  }
+}
+
+.table-control {
+  position: fixed;
+  bottom: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 100%;
+  height: 52px;
+  border-top: 1px black solid;
+  background-color: white;
+  text-align: center;
+
+  Button {
+    border-radius: 52px;
+  }
+
+  .mode-change {
+    width: percentage(4/7);
+  }
+
+  .day-left,
+  .day-right {
+    position: absolute;
+    width: percentage(1/7);
+  }
+
+  .day-left {
+    left: 8px;
+  }
+
+  .day-right {
+    right: 8px;
+  }
+}

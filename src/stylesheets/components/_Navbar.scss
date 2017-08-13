@@ -1,0 +1,42 @@
+nav {
+  background-color: $mainColor;
+  text-align: center;
+
+  img {
+    height: 52px;
+    padding-top: 2px;
+  }
+
+  .page-menu {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    background-color: white;
+
+    li {
+      display: inline-block;
+      padding: 8px;
+      width: percentage(1/4);
+      height: 28px + 8px * 2;
+      text-align: center;
+
+      i {
+        color: $mainColor;
+        font-size: 28px;
+        line-height: 28px;
+      }
+    }
+
+    .selected {
+      li {
+        background-color: $mainColor;
+
+        i {
+          color: white;
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,104 @@
+.search {
+  .input {
+    width: 100%;
+
+    input {
+      border-radius: 0;
+    }
+  }
+
+  .type-menu {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      padding: 8px;
+      width: percentage(1/6);
+      color: #428bca;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .selected {
+      li {
+        background-color: $mainColor;
+        color: white;
+      }
+    }
+  }
+
+  .empty-msg {
+    padding: 16px;
+    text-align: center;
+
+    div {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .icon-box {
+      width: percentage(1/8);
+      text-align: right;
+    }
+
+    .msg-box {
+      width: percentage(7/8);
+      text-align: left;
+
+      span {
+        display: block;
+      }
+
+      .title {
+        font-weight: bolder;
+      }
+
+      .content {
+        color: #cccccc;
+      }
+    }
+  }
+
+  .course-list {
+    width: 100%;
+    border-top: 1px black solid;
+    background-color: $backgroundColor;
+
+    .list-item {
+      padding: 8px;
+      min-height: 64px;
+      border-bottom: 1px black solid;
+      background-color: white;
+
+      .info {
+        display: inline-block;
+        width: percentage(3/4);
+        height: 100%;
+        vertical-align: middle;
+
+        .title {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: bolder;
+          font-size: 16px;
+        }
+
+        .professor:before {
+          content: ' | ';
+        }
+      }
+
+      .control {
+        display: inline-block;
+        width: percentage(1/4);
+        height: 100%;
+        vertical-align: middle;
+        text-align: right;
+      }
+    }
+  }
+}
