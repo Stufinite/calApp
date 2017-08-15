@@ -1,6 +1,5 @@
 import React from 'react'
-
-import {Icon} from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 
 const TitleBar = () => (
   <div className="title-bar">
@@ -80,11 +79,11 @@ const Radar = ({course}) => (
   </div>
 )
 
-const CourseDetail = ({course}) => (
+const CourseDetail = ({data}) => (
   <div className="overlay">
     <TitleBar/>
-    <Radar course={course}/>
-    <Detail course={course}/>
+    <Radar course={data}/>
+    <Detail course={data}/>
   </div>
 )
 

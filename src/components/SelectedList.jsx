@@ -1,6 +1,5 @@
 import React from 'react'
-
-import {Icon} from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 
 const TypeMenu = () => (
   <ul className="type-menu">
@@ -60,11 +59,11 @@ const CourseList = ({course}) => (
   </div>
 )
 
-const SelectedList = ({course}) => (
+const SelectedList = ({data}) => (
   <div className="list">
     <TypeMenu/>
     <Credit/>
-    <CourseList course={course}/>
+    <CourseList course={data}/>
   </div>
 )
 

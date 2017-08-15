@@ -1,6 +1,6 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
-import {Icon} from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 import logo from '../images/logo.svg'
 
