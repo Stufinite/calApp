@@ -5,7 +5,6 @@ import {Icon, Input} from 'semantic-ui-react'
 
 const TypeMenu = () => (
   <ul className="type-menu">
-
     <NavLink to="/search" exact activeClassName="selected">
       <li>全部</li>
     </NavLink>
@@ -24,7 +23,6 @@ const TypeMenu = () => (
     <NavLink to="/search/other" exact activeClassName="selected">
       <li>其它</li>
     </NavLink>
-
   </ul>
 )
 
@@ -74,7 +72,7 @@ const Course = ({course, key}) => (
   </div>
 )
 
-const CourseList = ({type, data}) => (
+const CourseList = ({filter = 'all', data}) => (
   <div className="course-list">
     {(() => {
       let typeMap = {
@@ -87,7 +85,7 @@ const CourseList = ({type, data}) => (
       let list = []
       for (let i = 0; i < data.length; i++) {
         let c = data[i]
-        if (c.type !== typeMap[type] && type != 'all') {
+        if (c.type !== typeMap[filter] && filter != 'all') {
           continue
         }
         list.push(<Course course={c} key={i}/>)
@@ -110,12 +108,7 @@ const Search = ({data, onSearchInput}) => {
         }
       }}/>
       <TypeMenu/>
-      <Route path="/search" exact render={(props) => (<CourseList {...props} type="all" data={data}/>)}/>
-      <Route path="/search/obl" render={(props) => (<CourseList {...props} type="obl" data={data}/>)}/>
-      <Route path="/search/opt" render={(props) => (<CourseList {...props} type="opt" data={data}/>)}/>
-      <Route path="/search/ge" render={(props) => (<CourseList {...props} type="ge" data={data}/>)}/>
-      <Route path="/search/pe" render={(props) => (<CourseList {...props} type="pe" data={data}/>)}/>
-      <Route path="/search/other" render={(props) => (<CourseList {...props} type="other" data={data}/>)}/>
+      <Route path="/search(/:filter)?" render={(props) => (<CourseList filter={props.location.pathname.split('/')[2]} data={data}/>)}/>
     </div>
   )
 }
