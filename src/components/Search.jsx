@@ -50,7 +50,7 @@ const NotFoundMsg = () => (
   </div>
 )
 
-const Course = ({course, key}) => (
+const Course = ({course, key, onSelect}) => (
   <div className="list-item" key={key}>
     <div className="info">
       <span className="title">
@@ -62,36 +62,41 @@ const Course = ({course, key}) => (
       <span className="professor">
         {course.professor}
       </span>
+      <span className="department">
+        {course.department}
+      </span>
     </div>
 
     <div className="control">
       {course.selected
         ? <Icon name="checkmark" color="blue" size="big"/>
-        : <Icon name="plus circle" color="grey" size="big"/>}
+      : <Icon onClick={(e) => {
+        onSelect(course)
+      }} name="plus circle" color="grey" size="big"/>}
     </div>
   </div>
 )
 
-const CourseList = ({filter = 'all', data}) => (
+const CourseList = ({filter = 'all', searchResult, onSelect}) => (
   <div className="course-list">
     {(() => {
       let typeMap = {
-        'obl': '大學部',
-        'opt': '大學部',
+        'obl': '必修類',
+        'opt': '選修類',
         'ge': '通識類',
         'pe': '體育類',
         'other': '其他類'
       }
       let list = []
-      for (let i = 0; i < data.length; i++) {
-        let c = data[i]
-        if (c.type !== typeMap[filter] && filter != 'all') {
+      for (let i = 0; i < searchResult.length; i++) {
+        let c = searchResult[i]
+        if (c.category !== typeMap[filter] && filter != 'all') {
           continue
         }
-        list.push(<Course course={c} key={i}/>)
+        list.push(<Course course={c} key={i} onSelect={onSelect}/>)
       }
       return list.length == 0
-        ? (data.length == 0)
+        ? (searchResult.length == 0)
           ? <EmptyMsg/>
           : <NotFoundMsg/>
         : list
@@ -99,7 +104,7 @@ const CourseList = ({filter = 'all', data}) => (
   </div>
 )
 
-const Search = ({data, onSearchInput}) => {
+const Search = ({searchResult, onSearchInput, onSelect}) => {
   return (
     <div className="search">
       <Input icon='search' placeholder='搜尋...' onKeyPress={(e) => {
@@ -108,7 +113,9 @@ const Search = ({data, onSearchInput}) => {
         }
       }}/>
       <TypeMenu/>
-      <Route path="/search(/:filter)?" render={(props) => (<CourseList filter={props.location.pathname.split('/')[2]} data={data}/>)}/>
+      <Route path="/search(/:filter)?" render={(props) => (
+          <CourseList filter={props.location.pathname.split('/')[2]} searchResult={searchResult} onSelect={onSelect}/>
+        )}/>
     </div>
   )
 }

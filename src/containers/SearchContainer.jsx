@@ -1,12 +1,12 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { getSearchResult } from '../actions/SearchActions'
+import { getSearchResult, setSelected } from '../actions/CourseActions'
 import Search from '../components/Search'
 
 const mapStateToProps = (state) => {
   return {
-    data: state.search.data,
+    searchResult: state.course.searchResult,
   }
 }
 
@@ -56,34 +56,13 @@ const mapDispatchToProps = (dispatch) => {
           return response.json()
         }).then((responseJson) => {
           // Classification
-          let data = responseJson
-          fetch(`${DOMAIN}/cphelper/get/Genra/?school=${school}`, {
-            credential: 'include',
-            method: 'GET',
-            headers: {
-              Accept: 'application/json'
-            }
-          }).then((response) => {
-            if (!response.ok) {
-              throw new Error(response.statusText)
-            }
-            return response.json()
-          }).then((responseJson) => {
-            for (let i = 0; i < data.length; i++) {
-              let c = data[i]
-              let types = Object.keys(responseJson)
-              for (let t of types) {
-                for (let d of Object.keys(responseJson[t])) {
-                  if (c.department === d) {
-                    c['type'] = t
-                  }
-                }
-              }
-            }
-            dispatch(getSearchResult(data))
-          })
+          dispatch(getSearchResult(responseJson))
         })
       })
+    },
+    onSelect: (course) => {
+      console.log(course)
+      dispatch(setSelected(course))
     }
   }
 }

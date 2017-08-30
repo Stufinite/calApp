@@ -13,15 +13,15 @@ const Navbar = () => (
         <li><Icon name='calendar'/></li>
       </NavLink>
 
-      <NavLink to="/selected/" activeClassName="selected">
+      <NavLink to="/selected" activeClassName="selected">
         <li><Icon name='list'/></li>
       </NavLink>
 
-      <NavLink to="/search/" activeClassName="selected">
+      <NavLink to="/search" activeClassName="selected">
         <li><Icon name='search'/></li>
       </NavLink>
 
-      <NavLink to="/detail/" activeClassName="selected">
+      <NavLink to="/detail" activeClassName="selected">
         <li><Icon name='settings'/></li>
       </NavLink>
 

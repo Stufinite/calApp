@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import search from './search'
+import course from './course'
 
 const calApp = combineReducers({
-  search
+  course
 })
 
 export default calApp

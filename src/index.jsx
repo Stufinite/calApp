@@ -12,15 +12,17 @@ import './stylesheets/main.scss'
 const store = createStore(calApp)
 
 store.testData = {
-  title: '計算機程式設計',
-  department: '資訊科學與工程學系',
-  code: '2293',
-  credit: '3',
-  professor: '蔡崇煒',
-  time: '三 6 7 8',
-  location: '理學大樓1001',
-  prerequisite: '無',
-  note: '無'
+  data: {
+    title: '計算機程式設計',
+    department: '資訊科學與工程學系',
+    code: '2293',
+    credit: '3',
+    professor: '蔡崇煒',
+    time: '三 6 7 8',
+    location: '理學大樓1001',
+    prerequisite: '無',
+    note: '無'
+  }
 }
 
 ReactDOM.render(

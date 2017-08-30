@@ -87,7 +87,7 @@
           font-size: 16px;
         }
 
-        .professor:before {
+        .professor:before, .department:before {
           content: ' | ';
         }
       }

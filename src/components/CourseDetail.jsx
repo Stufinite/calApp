@@ -82,8 +82,8 @@ const Radar = ({course}) => (
 const CourseDetail = ({data}) => (
   <div className="overlay">
     <TitleBar/>
-    <Radar course={data}/>
-    <Detail course={data}/>
+    <Radar course={data.data}/>
+    <Detail course={data.data}/>
   </div>
 )
 

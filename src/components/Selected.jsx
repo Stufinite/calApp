@@ -59,12 +59,12 @@ const CourseList = ({course}) => (
   </div>
 )
 
-const SelectedList = ({data}) => (
+const Selected = ({selected}) => (
   <div className="list">
     <TypeMenu/>
     <Credit/>
-    <CourseList course={data}/>
+    <CourseList course={selected}/>
   </div>
 )
 
-export default SelectedList
+export default Selected
