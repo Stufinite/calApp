@@ -1,14 +1,27 @@
 import React from 'react'
+import {IndexRoute, Route, NavLink} from 'react-router-dom'
 import {Icon} from 'semantic-ui-react'
 
 const TypeMenu = () => (
   <ul className="type-menu">
-    <li>全部</li>
-    <li>必修</li>
-    <li>選修</li>
-    <li>通識</li>
-    <li>體育</li>
-    <li>其它</li>
+    <NavLink to="/selected" exact activeClassName="selected">
+      <li>全部</li>
+    </NavLink>
+    <NavLink to="/selected/obl" exact activeClassName="selected">
+      <li>必修</li>
+    </NavLink>
+    <NavLink to="/selected/opt" exact activeClassName="selected">
+      <li>選修</li>
+    </NavLink>
+    <NavLink to="/selected/ge" exact activeClassName="selected">
+      <li>通識</li>
+    </NavLink>
+    <NavLink to="/selected/pe" exact activeClassName="selected">
+      <li>體育</li>
+    </NavLink>
+    <NavLink to="/selected/other" exact activeClassName="selected">
+      <li>其它</li>
+    </NavLink>
   </ul>
 )
 
@@ -59,11 +72,28 @@ const Course = ({course, key, onDelete}) => (
   </div>
 )
 
-const CourseList = ({course, onDelete}) => (
+const CourseList = ({filter = 'all', course, onDelete}) => (
   <div className="course-list">
-    {course == undefined || course.length == 0
-      ? <EmptyMsg/>
-      : course.map((c, i) => <Course course={c} key={i} onDelete={onDelete}/>)}
+      {(() => {
+        let typeMap = {
+          'obl': '必修類',
+          'opt': '選修類',
+          'ge': '通識類',
+          'pe': '體育類',
+          'other': '其他類'
+        }
+        let list = []
+        for (let i = 0; i < course.length; i++) {
+          let c = course[i]
+          if (c.category !== typeMap[filter] && filter != 'all') {
+            continue
+          }
+          list.push(<Course course={c} key={i} onDelete={onDelete}/>)
+        }
+        return list.length == 0
+          ? <EmptyMsg/>
+          : list
+      })()}
   </div>
 )
 
@@ -71,7 +101,9 @@ const Selected = ({selected, onDelete}) => (
   <div className="list">
     <TypeMenu/>
     <Credit selected={selected}/>
-    <CourseList course={selected} onDelete={onDelete}/>
+    <Route path="/selected(/:filter)?" render={(props) => (
+        <CourseList filter={props.location.pathname.split('/')[2]} course={selected} onDelete={onDelete}/>
+      )}/>
   </div>
 )
 
