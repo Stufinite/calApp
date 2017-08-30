@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import {Icon} from 'semantic-ui-react'
 
 const TypeMenu = () => (
   <ul className="type-menu">
@@ -27,15 +27,17 @@ const EmptyMsg = () => (
 const Credit = (selected) => (
   <div className="credits-box">
     <span>已選修學分</span>
-    <span id="credits">{(selected == undefined || selected.length == 0 ? 0 : ((arr) => {
-        let sum = 0
-        arr.map((c) => sum += c.credits)
-        return sum
-    })(selected.selected))}</span>
+    <span id="credits">{(selected == undefined || selected.length == 0
+        ? 0
+        : ((arr) => {
+          let sum = 0
+          arr.map((c) => sum += c.credits)
+          return sum
+        })(selected.selected))}</span>
   </div>
 )
 
-const Course = ({course, key}) => (
+const Course = ({course, key, onDelete}) => (
   <div className="list-item" key={key}>
     <div className="info">
       <span className="title">
@@ -50,24 +52,26 @@ const Course = ({course, key}) => (
     </div>
 
     <div className="control">
-      <Icon name="trash" color="red" size="big"/>
+      <Icon onClick={() => {
+        onDelete(course)
+      }} name="trash" color="red" size="big"/>
     </div>
   </div>
 )
 
-const CourseList = ({course}) => (
+const CourseList = ({course, onDelete}) => (
   <div className="course-list">
     {course == undefined || course.length == 0
       ? <EmptyMsg/>
-      : course.map((c, i) => <Course course={c} key={i}/>)}
+      : course.map((c, i) => <Course course={c} key={i} onDelete={onDelete}/>)}
   </div>
 )
 
-const Selected = ({selected}) => (
+const Selected = ({selected, onDelete}) => (
   <div className="list">
     <TypeMenu/>
     <Credit selected={selected}/>
-    <CourseList course={selected}/>
+    <CourseList course={selected} onDelete={onDelete}/>
   </div>
 )
 
