@@ -74,7 +74,7 @@
 
     .list-item {
       padding: 8px;
-      height: 64px;
+      min-height: 64px;
       border-bottom: 1px black solid;
       background-color: white;
 
@@ -101,12 +101,7 @@
         width: percentage(1/4);
         height: 100%;
         vertical-align: middle;
-
-        i {
-          position: absolute;
-          right: 8px;
-          line-height: 46px;
-        }
+        text-align: right;
       }
     }
   }

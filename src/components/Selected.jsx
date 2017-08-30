@@ -24,10 +24,14 @@ const EmptyMsg = () => (
   </div>
 )
 
-const Credit = () => (
+const Credit = (selected) => (
   <div className="credits-box">
     <span>已選修學分</span>
-    <span id="credits">0</span>
+    <span id="credits">{(selected == undefined || selected.length == 0 ? 0 : ((arr) => {
+        let sum = 0
+        arr.map((c) => sum += c.credits)
+        return sum
+    })(selected.selected))}</span>
   </div>
 )
 
@@ -53,7 +57,7 @@ const Course = ({course, key}) => (
 
 const CourseList = ({course}) => (
   <div className="course-list">
-    {course.length == 0
+    {course == undefined || course.length == 0
       ? <EmptyMsg/>
       : course.map((c, i) => <Course course={c} key={i}/>)}
   </div>
@@ -62,7 +66,7 @@ const CourseList = ({course}) => (
 const Selected = ({selected}) => (
   <div className="list">
     <TypeMenu/>
-    <Credit/>
+    <Credit selected={selected}/>
     <CourseList course={selected}/>
   </div>
 )

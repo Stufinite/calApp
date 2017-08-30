@@ -7,13 +7,13 @@ import Search from '../components/Search'
 const mapStateToProps = (state) => {
   return {
     searchResult: state.course.searchResult,
+    selected: state.course.selected
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchInput: (keyword) => {
-      // Start
       let DOMAIN = 'http://localhost.api.campass.com.tw:8080'
       let school = 'NSYSU'
       let semester = '1061'
@@ -61,7 +61,6 @@ const mapDispatchToProps = (dispatch) => {
       })
     },
     onSelect: (course) => {
-      console.log(course)
       dispatch(setSelected(course))
     }
   }
